@@ -25,7 +25,7 @@ pub use pancurses::Input;
 
 use std::iter::Iterator;
 use std::panic::*;
-use std::sync::atomic::{AtomicBool, Ordering, ATOMIC_BOOL_INIT};
+use std::sync::atomic::{AtomicBool, Ordering};
 
 use pancurses::ToChtype;
 
@@ -53,7 +53,7 @@ macro_rules! colorpair {
 }
 
 #[allow(non_upper_case_globals)]
-static curses_is_on: AtomicBool = ATOMIC_BOOL_INIT;
+static curses_is_on: AtomicBool = AtomicBool::new(false);
 
 /// The three options you can pass to [`EasyCurses::set_cursor_visibility`].
 ///
