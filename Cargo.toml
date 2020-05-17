@@ -9,7 +9,9 @@ description = "A crate that makes working with curses easy."
 license = "0BSD"
 
 [dependencies]
-pancurses = { version = "0.17", git = "git://github.com/czipperz/pancurses.git" }
+pancurses = { version = "0.16", git = "git://github.com/spearman/pancurses.git", branch = "bump-ncurses" }
+#pancurses = { version = "0.16", git = "git://github.com/czipperz/pancurses.git" }
+#pancurses = { version = "0.16", path = "../pancurses-czipperz", features = ["wide"] }
 
 [lib]
 name = "easycurses"
