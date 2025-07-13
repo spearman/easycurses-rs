@@ -12,3 +12,5 @@ Cargo.lock
 # VS Code spell check file
 cSpell.json
 .vscode/settings.json
+
+rust-analyzer.log

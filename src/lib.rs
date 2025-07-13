@@ -155,7 +155,7 @@ mod color_tests {
     let colors = [Black, Red, Green, Yellow, Blue, Magenta, Cyan, White];
     for &color in colors.iter() {
       if i16_to_color(color_to_i16(color)).unwrap() != color {
-        panic!(color);
+        panic!("{:?}", color);
       }
     }
   }
@@ -332,7 +332,7 @@ impl EasyCurses {
     // or not. If we did that means it was off and it's safe to turn it on.
     // If we didn't change it that means it was already on and we should
     // back out.
-    if !curses_is_on.compare_and_swap(false, true, Ordering::SeqCst) {
+    if !curses_is_on.compare_exchange(false, true, Ordering::SeqCst, Ordering::SeqCst).unwrap_or_else(|x| x) {
       let w = pancurses::initscr();
       let color_support = if pancurses::has_colors() {
         to_bool(pancurses::start_color())
